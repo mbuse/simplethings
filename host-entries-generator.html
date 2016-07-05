@@ -1,6 +1,12 @@
 <html>
-	<head><title>HOST File Generator</title>
-	<style>
+  <head>
+    <title>HOST File Generator</title><meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <style>
 		body {
 			background-color: ivory;
 		}
@@ -11,11 +17,19 @@
 		input[type="text"] {
 			width: 250px;
 		}
-	</style>
-	</head>
-	<body>
-		<h1>HOST File Generator</h1>
-		<div>
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>HOST File Generator</h1>
+        <h2>Generate host entries for your blueprint installations...</h2>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <div>
 			<p>
 				<label for="ip">IP Address:</label>
 				<input type="text" id="ip" name="ip" />
@@ -35,10 +49,12 @@
 			<p> 
 				<button onclick="generateHostEntries()">Generate Host Entries</button>
 			</p>
-		</div>
-		<pre id="output">
-		</pre>
-		<script language="JavaScript">
+	</div>
+	<pre id="output">
+	</pre>
+    </section>
+  </div>
+  <script language="JavaScript">
 			function generateHostEntries() {
 				
 				var ips = getInput("ip");
@@ -94,6 +110,6 @@
 				output.innerHTML = message;
 			}
 			
-		</script>
-	</body>
+    </script>
+  </body>
 </html>
