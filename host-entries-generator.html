@@ -21,7 +21,7 @@
   <body>
     <header>
       <div class="container">
-        <h1>HOST File Generator</h1>
+        <h1>host entries generator</h1>
         <h2>Generate host entries for your blueprint installations...</h2>
       </div>
     </header>
@@ -72,12 +72,10 @@
 			
 			function multiplyEntries(ips, prefixes, tenants, tlds) {
 				var result = new Array();
-				ips.forEach(function(ip) {
-					result.push(ip + "   ");
-				});
-				result = multiplyTwoArrays(result, prefixes, "-");
-				result = multiplyTwoArrays(result, tenants, ".");
-				result = multiplyTwoArrays(result, tlds, "");
+				
+				result = multiplyTwoArrays(prefixes, tenants, "-");
+				result = multiplyTwoArrays(result, tlds, ".");
+				result = multiplyTwoArrays(ips, result, "   ");
 				
 				return result;
 			}
@@ -87,10 +85,13 @@
 				secondArray.forEach(function(second) {
 					firstArray.forEach( function(first) {
 						if (second.length==0) {
-							result.push(first);
+							result.push(first.trim());
 						}
+						else if (first.length == 0) {
+							result.push(second.trim());
+						} 
 						else {
-							result.push( first + second.trim() + separator );
+							result.push(first.trim() + separator + second.trim());
 						}
 					});
 				});
