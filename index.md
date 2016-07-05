@@ -9,4 +9,4 @@ This site will provide you with a collection of tools which will support you in 
 
 ## Tools:
 
- * [Host Entries Generator][host-entries-generator.html]
+ * [Host Entries Generator](host-entries-generator.html)
