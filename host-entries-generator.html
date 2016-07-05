@@ -1,0 +1,99 @@
+<html>
+	<head><title>HOST File Generator</title>
+	<style>
+		body {
+			background-color: ivory;
+		}
+		label {
+			width: 150px;
+			display: inline-block;
+		}
+		input[type="text"] {
+			width: 250px;
+		}
+	</style>
+	</head>
+	<body>
+		<h1>HOST File Generator</h1>
+		<div>
+			<p>
+				<label for="ip">IP Address:</label>
+				<input type="text" id="ip" name="ip" />
+			</p>
+			<p>
+				<label for="prefixes">Virtual Host Prefixes</label>
+				<input type="text" id="prefixes" name="prefixes" />
+			</p>
+			<p>
+				<label for="tenants">Tenants</label>
+				<input type="text" id="tenants" name="tenants" />
+			</p>
+			<p>
+				<label for="tlds">TLDs</label>
+				<input type="text" id="tlds" name="tlds" />
+			</p>
+			<p> 
+				<button onclick="generateHostEntries()">Generate Host Entries</button>
+			</p>
+		</div>
+		<pre id="output">
+		</pre>
+		<script language="JavaScript">
+			function generateHostEntries() {
+				
+				var ips = getInput("ip");
+				var prefixes = getInput("prefixes");
+				var tenants = getInput("tenants");
+				var tlds = getInput("tlds");
+				
+				var result = multiplyEntries(ips, prefixes, tenants, tlds);
+				
+				var msg = "";
+				result.forEach(function(line){
+					msg = msg + line + "<br />";
+				});
+				printAll(msg);
+			}
+			
+			function multiplyEntries(ips, prefixes, tenants, tlds) {
+				var result = new Array();
+				ips.forEach(function(ip) {
+					result.push(ip + "   ");
+				});
+				result = multiplyTwoArrays(result, prefixes, "-");
+				result = multiplyTwoArrays(result, tenants, ".");
+				result = multiplyTwoArrays(result, tlds, "");
+				
+				return result;
+			}
+			
+			function multiplyTwoArrays(firstArray, secondArray, separator) {
+				var result = new Array();
+				secondArray.forEach(function(second) {
+					firstArray.forEach( function(first) {
+						if (second.length==0) {
+							result.push(first);
+						}
+						else {
+							result.push( first + second.trim() + separator );
+						}
+					});
+				});
+				return result;
+			}
+		
+			function getInput(name) {
+				var input = document.getElementById(name);
+				var text = input.value;
+				var array = text.split(",");
+				return array;
+			}
+			
+			function printAll(message) {
+				var output = document.getElementById("output");
+				output.innerHTML = message;
+			}
+			
+		</script>
+	</body>
+</html>
