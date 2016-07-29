@@ -15,5 +15,5 @@ The script can be downloaded from the following link
 
 This script requires the following software
 
-* ```ab.exe´´´ - Apache Bench is part of the Apache HTTPD webserver
-* ```sed.exe´´´ - which is part of Cygwin
+* `ab.exe` - Apache Bench is part of the Apache HTTPD webserver
+* `sed.exe` - which is part of Cygwin
