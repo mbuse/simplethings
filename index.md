@@ -10,4 +10,4 @@ This site will provide you with a collection of tools which will support you in 
 ## Tools:
 
  * [Host Entries Generator](host-entries-generator.html)
- * [Performance Measuring](performance-measuring/) A Windows Batch Script for running performance tests
+ * [Performance Measuring](performance-measuring/) - A Windows Batch Script for running performance tests
